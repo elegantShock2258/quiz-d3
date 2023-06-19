@@ -16,8 +16,11 @@ const Signup = () => {
     if (errorMsg) setErrorMsg('')
 
     const body = {
+      // Fname: e.currentTarget.Fname.value,
+      // Lname: e.currentTarget.Lname.value,
       username: e.currentTarget.username.value,
       password: e.currentTarget.password.value,
+      // pfp: e.currentTarget.pfp.value,
     }
 
     if (body.password !== e.currentTarget.rpassword.value) {
@@ -28,10 +31,13 @@ const Signup = () => {
     try {
       const res = await fetch('/api/signup', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
       })
+
+
       if (res.status === 200) {
+        console.log("ok")
         Router.push('/login')
       } else {
         throw new Error(await res.text())

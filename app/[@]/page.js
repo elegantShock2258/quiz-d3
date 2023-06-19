@@ -11,11 +11,9 @@ const Page = async () => {
     console.log(pathname)
     const prisma = new PrismaClient()
     let result = null
-
-        result = (await prisma.USERS.findMany())
+    result = (await prisma.USERS.findMany())
 
     console.log(result)
-
 
     if (pathname[1] === '@') {
         let username = pathname.slice(2)
