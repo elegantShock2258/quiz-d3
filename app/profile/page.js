@@ -1,4 +1,4 @@
-import { useUser } from '../lib/hooks'
+import { useUser } from '../../lib/hooks'
 import Layout from '../components/layout'
 
 const Profile = () => {

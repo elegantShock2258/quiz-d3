@@ -1,0 +1,55 @@
+1) implement auth: (usename pass, email,phone,google,microsoft,twitter , dauth)
+2) every user can:
+	i) create quizzes
+	ii) change their pfp
+	iii) have a personal page for them which shows thier quizzes
+	iv) search other users by username
+	v)  see the quizzes they took and score
+	vi) send  freind requets
+	vii) private quizzes
+	viii) addting tags to quizzes so they can be searched
+	ix) in a user's quiz add a leaderboard 
+	x) create a reccomendation system reccomending friends
+	xi) add notifications
+ui:
+	React UI
+	sass
+	1) pg 1: login ui
+	2) pg 2: dashboard
+	3) pg 3: quiz UI
+backend:
+	auth usind passport.js
+	db using sqllite
+		1) table for users and resp data
+		2) session cookies
+
+
+
+[x] usernames start with @<username>
+[x] quiz start with q<quizid>
+
+
+1) localhost:3000/ -> login UI
+2) localhost:3000/@<username> -> user UI as anon
+3) if user is signed in, localhost:3000/<username> -> as user
+4) if signed in user visits its own userpge -> show userpage with edit options
+5) localhost:3000/q<quiz-id> -> anon, submit as anon
+6) localhost:3000/q<quiz-id> -> user, submit as user, put an option in the quizes to be if they can be submitted once or more
+7) localhost:3000/q<quiz-id> -> user, private quiz, authenticate again,  submit as user, put an option in the quizes to be if they can be submitted once or more
+
+
+LOGIN PAGE:
+i) ask for auth
+ii) redirect to user dashboard
+
+user page:
+i) make instagram type ui
+
+public quiz page:
+i) have basic quiz UI 
+ii) submit as user
+iii) see final score and leaderboard
+
+private quiz ui:
+i) ask for auth (again)
+ii)same shit as public quiz
