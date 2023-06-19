@@ -4,6 +4,7 @@ import Router from 'next/router'
 import { useUser } from '../../lib/hooks'
 import Layout from '../components/layout'
 import Form from '../components/form'
+import { createUser } from '../../lib/user'
 
 const Signup = () => {
   useUser({ redirectTo: '/', redirectIfFound: true })
@@ -16,13 +17,13 @@ const Signup = () => {
     if (errorMsg) setErrorMsg('')
 
     const body = {
-      // Fname: e.currentTarget.Fname.value,
-      // Lname: e.currentTarget.Lname.value,
+      Fname: e.currentTarget.Fname.value,
+      Lname: e.currentTarget.Lname.value,
       username: e.currentTarget.username.value,
       password: e.currentTarget.password.value,
-      // pfp: e.currentTarget.pfp.value,
+      pfp: e.currentTarget.pfp.value,
     }
-
+    createUser(body)
     if (body.password !== e.currentTarget.rpassword.value) {
       setErrorMsg(`The passwords don't match`)
       return
