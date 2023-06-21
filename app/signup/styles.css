@@ -1,0 +1,49 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.namesContainer {
+    background-color: #333;
+
+    margin: 0px;
+    padding: 0px;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.signupText {
+
+    font-family: monospace;
+    font-size: 6.5rem;
+    text-align: center;
+    color: white;
+}
+
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1 1 auto;
+}
+
+button {
+    border:none;
+    border-radius: 20px;
+
+    padding:20px;
+
+    font-size: 4rem;
+    font-family: sans;
+    font-weight: 1000;
+
+    color:bisque;
+
+    background:none;
+}

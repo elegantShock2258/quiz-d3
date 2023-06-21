@@ -6,6 +6,7 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
       <span>Username</span>
       <input type="text" name="username" required />
     </label>
+
     <label>
       <span>Password</span>
       <input type="password" name="password" required />

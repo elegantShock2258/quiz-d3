@@ -4,10 +4,9 @@ import Header from './header'
 const Layout = (props) => (
   <>
     <Head>
-      <title>With Cookies</title>
-    </Head>
+      <title>Sign Up</title>
 
-    <Header />
+    </Head>
 
     <main>
       <div className="container">{props.children}</div>

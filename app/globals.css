@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+@font-face {
+    font-family: 'Gunsan Script';
+    src: url('/Assets/Fonts/gunsan/Gunsan\ Script.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gunsan';
+    src: url('/Assets/Fonts/gunsan/Gunsan.ttf') format('truetype');
+}
+
