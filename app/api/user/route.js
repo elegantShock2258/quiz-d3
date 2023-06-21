@@ -7,9 +7,8 @@ export async function GET(req, res) {
     const session = await getLoginSession(req)
     const user = (session && (await findUser(session))) ?? null
 
-    return NextResponse.json({ user })
+    NextResponse.json({ user })
   } catch (error) {
     console.error(error)
-    return NextResponse.json({ "null":null })
   }
 }

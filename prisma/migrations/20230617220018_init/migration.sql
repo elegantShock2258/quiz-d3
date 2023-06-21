@@ -3,7 +3,7 @@ CREATE TABLE "USERS" (
     "FirstName" TEXT NOT NULL,
     "LastName" TEXT NOT NULL,
     "Following" TEXT NOT NULL,
-    "Followes" TEXT NOT NULL,
+    "Followers" TEXT NOT NULL,
     "QuizMade" TEXT NOT NULL,
     "QuizAttempted" TEXT NOT NULL,
     "Score" INTEGER NOT NULL,
