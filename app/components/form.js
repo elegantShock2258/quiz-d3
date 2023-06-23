@@ -1,7 +1,17 @@
 import Link from 'next/link'
-
+// temp. TODO: make this obselete
 const Form = ({ isLogin, errorMessage, onSubmit }) => (
   <form onSubmit={onSubmit}>
+    <label>
+      <span>First Name</span>
+      <input type="text" name="Fname" required />
+    </label>
+
+    <label>
+      <span>Last Name</span>
+      <input type="text" name="Lname" required />
+    </label>
+
     <label>
       <span>Username</span>
       <input type="text" name="username" required />
@@ -11,34 +21,36 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
       <span>Password</span>
       <input type="password" name="password" required />
     </label>
-    {!isLogin && (
-      <label>
-        <span>Repeat password</span>
-        <input type="password" name="rpassword" required />
-      </label>
-    )}
+    {
+  !isLogin && (
+    <label>
+      <span>Repeat password</span>
+      <input type="password" name="rpassword" required />
+    </label>
+  )
+}
 
-    <div className="submit">
-      {isLogin ? (
-        <>
-          <Link href="/signup" legacyBehavior>
-            <a>I don't have an account</a>
-          </Link>
-          <button type="submit">Login</button>
-        </>
-      ) : (
-        <>
-          <Link href="/login" legacyBehavior>
-            <a>I already have an account</a>
-          </Link>
-          <button type="submit">Signup</button>
-        </>
-      )}
-    </div>
+<div className="submit">
+  {isLogin ? (
+    <>
+      <Link href="/signup" legacyBehavior>
+        <a>I don't have an account</a>
+      </Link>
+      <button type="submit">Login</button>
+    </>
+  ) : (
+    <>
+      <Link href="/login" legacyBehavior>
+        <a>I already have an account</a>
+      </Link>
+      <button type="submit">Signup</button>
+    </>
+  )}
+</div>
 
-    {errorMessage && <p className="error">{errorMessage}</p>}
+{ errorMessage && <p className="error">{errorMessage}</p> }
 
-    <style jsx>{`
+<style jsx>{`
       form,
       label {
         display: flex;
@@ -77,7 +89,7 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
         margin: 1rem 0 0;
       }
     `}</style>
-  </form>
+  </form >
 )
 
 export default Form

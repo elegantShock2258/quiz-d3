@@ -4,7 +4,7 @@
 }
 
 .namesContainer {
-    background-color: #333;
+    background-color: #111;
 
     margin: 0px;
     padding: 0px;
@@ -13,7 +13,9 @@
     height: 100vh;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .signupText {
@@ -33,17 +35,34 @@
     flex: 1 1 auto;
 }
 
+.imageContainer {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    height: 90vh;
+    width: fit-content;
+
+}
+.regContainer {
+    width: 50vw;
+    height: 100vh;
+    border-left: 3px solid white;
+}
+
 button {
-    border:none;
+    border: none;
     border-radius: 20px;
 
-    padding:20px;
+    padding: 20px;
 
     font-size: 4rem;
     font-family: sans;
     font-weight: 1000;
 
-    color:bisque;
+    color: bisque;
 
-    background:none;
+    background: none;
 }
