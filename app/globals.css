@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Press+Start+2P&family=Roboto+Mono:wght@700&display=swap');
 
 @font-face {
     font-family: 'Gunsan Script';
@@ -9,4 +10,3 @@
     font-family: 'Gunsan';
     src: url('/Assets/Fonts/gunsan/Gunsan.ttf') format('truetype');
 }
-

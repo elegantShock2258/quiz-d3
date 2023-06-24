@@ -18,11 +18,10 @@ export async function POST(req,r11) {
 
   let sessionToken = await addToken(data.username)
   res.cookies.set('session', sessionToken)
-  cookies().set("session",sessionToken)
+  cookies().set("token",sessionToken)
   console.log("here>")
 
   return new Response('response', {
     status: 200,
-    headers: { 'Set-Cookie': `token=${sessionToken}` },
   })
 }
