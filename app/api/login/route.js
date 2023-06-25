@@ -8,7 +8,7 @@ import { addToken } from '../../../lib/user'
 export async function POST(req,r11) {
   let data = await req.json()
   validateLocal(data.username, data.password, (e) => { console.log("Logged In", e) })
-
+  console.log(data)
   // makeup cookie 
 
   req.cookies.getAll()

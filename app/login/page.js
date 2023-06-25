@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useUser } from '../../lib/hooks'
 import Layout from '../components/layout'
 import Form from '../components/form'
-
+import './loginStyles.css'
 const Login = () => {
   // useUser({ redirectTo: '/', redirectIfFound: true })
 
@@ -31,28 +31,22 @@ const Login = () => {
     if (res.status === 200) {
       router.push("/")
     }
-    
-    // } catch (error) {
-    //   console.error('An unexpected error happened occurred:', error)
-    //   setErrorMsg(error.message)
-    // }
+
   }
 
   return (
-    <Layout>
+    <>
       <div className="login">
-        <Form isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
+        <div className="container">
+          <h1> Login </h1>
+          <form onSubmit={handleSubmit} className='container'>
+            <input type="text" className="username" name="username" placeholder="Enter Username" required/>
+            <input type="password" className="password" name="password" placeholder="Enter Password" required/>
+            <button className='loginBtn' type="submit" >Login</button>
+          </form>
+        </div>
       </div>
-      <style jsx>{`
-        .login {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      `}</style>
-    </Layout>
+    </>
   )
 }
 

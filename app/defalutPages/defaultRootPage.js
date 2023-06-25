@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import './stylesDefault.css'
-import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 export default function DefaultPage() {
     let [quidIdInput, setQuizIdInput] = useState()
@@ -12,7 +11,7 @@ export default function DefaultPage() {
             <h1 className='quiz'>Quiz!</h1>
             <div className='quizId'>
                 <input type='text' id='quiz' value={quidIdInput} onChange={(e) => setQuizIdInput(e.target.value)} placeholder='Quiz Id' />
-                <div className='button' onClick={() => { router.push(`/q${quidIdInput}`) }}>Enter</div>
+                <div className='button' onClick={() => { window.location = `/q${quidIdInput}` }}>Enter</div>
             </div>
         </div>
     </>

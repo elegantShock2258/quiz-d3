@@ -24,10 +24,10 @@ const Page = async () => {
         let quizName = pathname.slice(2)
 
         'use server'
-        let [found,quizObject] = await findQuiz(quizName)
+        let [found,quizObject,userCreated] = await findQuiz(quizName)
         if (found) {
             return (
-                <QuizPage quiz={quizObject}></QuizPage>
+                <QuizPage quiz={quizObject} userCreated={userCreated}></QuizPage>
             )
         } else {
             return (<QuizPage quiz={-1}></QuizPage>)
