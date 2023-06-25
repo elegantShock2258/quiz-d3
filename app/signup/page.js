@@ -1,13 +1,7 @@
 'use client'
 import { useState } from 'react'
-import Form from '../components/form'
-import Layout from '../components/layout'
-import { createUser } from '../../lib/user'
-import { motion } from "framer-motion"
 import './styles.css'
-import Image from 'next/image'
-import quizPic from './quiz.png'
-let Lname, Fname, username, password, pfp = "";
+
 
 
 
@@ -20,25 +14,44 @@ let Lname, Fname, username, password, pfp = "";
 // 4) ppl to follow (like insta)
 // 5) quiz to attempt (make it like 4)
 // 6) topics to make quiz in 
-function AskNames() {
-    return <>
-        <div className='namesContainer'>
-            <div className='imageContainer'>
-                <Image src={quizPic} />
-            </div>
-            <div className='regContainer'>
-                <div>
-                    <h1 className='signupText'>Sign Up</h1>
-                </div>
-                <div className='buttonContainer'>
-                    <motion.button whileHover={{ scale: 1.1, color: "#efefef", borderRadius: "20px" }} >Register Now</motion.button>
-                </div>
-            </div>
-        </div>
-    </>
-}
 
 export default function Signup() {
+
+    let Lname ="",
+        Fname  = "",
+        username= "",
+        password = "",
+        repass = "",
+        pfp = "";
+
+    function handleSubmitNames(e){
+        Fname = e.currentTarget["0"].value
+        Lname = e.currentTarget["1"].value
+
+        console.log(Fname,Lname)
+        setCounter(1)
+    }
+    function AskNames() {
+        return <>
+            <div className='AskNames'>
+                <div className='container'>
+                    <form onSubmit={handleSubmitNames}>
+                        <h1>Let us know you</h1>
+                        <div className='inputs'>
+                            <div className='fnameInput'>
+                                <input name="fname" type="text" placeholder='Enter Your First Name' required></input>
+                            </div>
+                            <div className='lnameInput'>
+                                <input name="lname" type="text" placeholder='Enter Your Last Name' required></input>
+                            </div>
+                        </div>
+                        <button type="submit">Next</button>
+                    </form>
+                </div>
+            </div >
+        </>
+    }
+
     const [counter, setCounter] = useState(0)
     const [errorMsg, setErrorMsg] = useState('')
 
@@ -69,10 +82,10 @@ export default function Signup() {
         }
     }
 
-    return <Layout>
-        <div className="login">
-            <Form isLogin={false} errorMessage={errorMsg} onSubmit={handleSubmit} counter={counter} />
-        </div>
-    </Layout>
+    if (counter == 0) {
+        return <>
+            <AskNames />
+        </>
+    }
 
 }

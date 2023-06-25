@@ -1,68 +1,72 @@
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    border: none;
 }
 
-.namesContainer {
-    background-color: #111;
 
-    margin: 0px;
-    padding: 0px;
-
+.AskNames {
     width: 100vw;
     height: 100vh;
 
+    background-color: #333;
+
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
 }
 
-.signupText {
+.AskNames>.container>form {
+    display: flex;
+    flex-direction: column;
 
-    font-family: monospace;
-    font-size: 6.5rem;
-    text-align: center;
+    gap: 80px;
+}
+
+.AskNames>.container>form>h1 {
     color: white;
+    font-size: 7rem;
+    text-align: center;
+    font-family: sans-serif;
 }
 
-
-.buttonContainer {
+.AskNames>.container>form>.inputs {
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    flex: 1 1 auto;
+    gap: 300px;
 }
 
-.imageContainer {
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.AskNames>.container>form>.inputs>.fnameInput,
+.AskNames>.container>form>.inputs>.lnameInput {
+    display: inline;
 }
-img{
-    height: 90vh;
+
+.AskNames>.container>form>.inputs>.fnameInput>input,
+.AskNames>.container>form>.inputs>.lnameInput>input {
+    text-align: center;
+    outline: none;
+
+    flex: 0 0 0%;
+
+    font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    width: 300px;
+    padding: 10px 35px;
+}
+
+.AskNames>.container>form>button {
+    font-family: 'Roboto mono';
+    font-size: 2rem;
+
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    border: 3px solid #ffffff80;
+
+    background-color: #7600bc;
+    color: white;
     width: fit-content;
 
-}
-.regContainer {
-    width: 50vw;
-    height: 100vh;
-    border-left: 3px solid white;
-}
+    align-self: flex-end;
 
-button {
-    border: none;
-    border-radius: 20px;
+    padding: 10px;
 
-    padding: 20px;
-
-    font-size: 4rem;
-    font-family: sans;
-    font-weight: 1000;
-
-    color: bisque;
-
-    background: none;
 }

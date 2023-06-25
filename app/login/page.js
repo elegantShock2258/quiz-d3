@@ -1,9 +1,6 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useUser } from '../../lib/hooks'
-import Layout from '../components/layout'
-import Form from '../components/form'
 import './loginStyles.css'
 const Login = () => {
   // useUser({ redirectTo: '/', redirectIfFound: true })
@@ -39,10 +36,13 @@ const Login = () => {
       <div className="login">
         <div className="container">
           <h1> Login </h1>
-          <form onSubmit={handleSubmit} className='container'>
-            <input type="text" className="username" name="username" placeholder="Enter Username" required/>
-            <input type="password" className="password" name="password" placeholder="Enter Password" required/>
-            <button className='loginBtn' type="submit" >Login</button>
+          <form onSubmit={handleSubmit} className='formContainer'>
+            <input type="text" className="username" name="username" placeholder="Enter Username" required />
+            <input type="password" className="password" name="password" placeholder="Enter Password" required />
+            <div className='buttons'>
+              <button className='loginBtn' type="submit" >Login</button>
+              <button className='register' onClick={()=>{window.location="/signup"}} >Register</button>
+            </div>
           </form>
         </div>
       </div>
