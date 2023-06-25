@@ -6,7 +6,7 @@ export default function DefaultPage() {
     let [quidIdInput, setQuizIdInput] = useState()
     let router = useRouter()
     return <>
-        <div className='navbar'><span className='login'>login</span></div >
+        <div className='navbar'><span className='login' onClick={()=>{window.location = "/login"}}>login</span></div >
         <div className='container'>
             <h1 className='quiz'>Quiz!</h1>
             <div className='quizId'>
