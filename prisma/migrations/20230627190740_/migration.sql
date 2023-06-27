@@ -10,7 +10,8 @@ CREATE TABLE "USERS" (
     "ProfilePic" TEXT NOT NULL,
     "Bio" TEXT NOT NULL,
     "Username" TEXT NOT NULL PRIMARY KEY,
-    "Password" TEXT NOT NULL
+    "Password" TEXT NOT NULL,
+    "UserHandle" TEXT NOT NULL
 );
 
 -- CreateTable

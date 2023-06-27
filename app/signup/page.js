@@ -4,7 +4,15 @@ import './styles.css'
 import ReactImagePickerEditor, { ImagePickerConf } from 'react-image-picker-editor';
 import 'react-image-picker-editor/dist/index.css'
 
-
+const config2 = {
+    borderRadius: '8px',
+    language: 'en',
+    width: '330px',
+    height: '250px',
+    objectFit: 'contain',
+    compressInitial: null,
+};
+const initialImage = ''; //default pfp img
 
 
 // for UI:
@@ -18,15 +26,15 @@ import 'react-image-picker-editor/dist/index.css'
 
 export default function Signup() {
 
-    let Lname = "",
-        Fname = "",
-        username = "",
-        password = "",
+    let [Lname,setLname] = useState(""),
+        [Fname,setFname] = useState(""),
+        [username,setUsername] = useState(""),
+        [password,setPassword] = useState(""),
         pfp = "";
 
     function handleSubmitNames(e) {
-        Fname = e.currentTarget["0"].value
-        Lname = e.currentTarget["1"].value
+        setFname(e.currentTarget["0"].value)
+        setLname(e.currentTarget["1"].value)
 
         console.log(Fname, Lname)
         setCounter(1)
@@ -56,8 +64,8 @@ export default function Signup() {
         let lrpassword = e.currentTarget["2"].value
 
         if (lpassword == lrpassword) {
-            password = e.currentTarget["1"].value
-            username = e.currentTarget["0"].value
+            setPassword(e.currentTarget["1"].value)
+            setUsername(e.currentTarget["0"].value)
             setCounter(2)
         } else {
             //pass wont match
@@ -89,35 +97,41 @@ export default function Signup() {
         </div>
     }
 
-    function handleOnchange(e){
-
-    }
 
     function AskPfp() {
-        let imageInput = useRef()
+
+        let [pfpThere, setPfpThere] = useState("Skip")
+        function setImageSrc(newDataUri) {
+            pfp = (newDataUri)
+            if (pfp != null && pfp != initialImage && pfp != undefined && pfpThere != "Next") setPfpThere("Next")
+        }
+        function submitPfp(e) {
+            handleSubmit()
+            setCounter(3)
+        }
+
         return <div className='AskCredentials'>
             <div className='container'>
-            
+                < ReactImagePickerEditor
+                    config={config2}
+                    imageSrcProp={initialImage}
+                    imageChanged={(newDataUri) => { setImageSrc(newDataUri) }} />
+
+                <button onClick={submitPfp}>{pfpThere}</button>
             </div>
         </div>
     }
-    const [counter, setCounter] = useState(2)
+    const [counter, setCounter] = useState(0)
     const [errorMsg, setErrorMsg] = useState('')
 
     async function handleSubmit(e) {
-        e.preventDefault()
         if (errorMsg) setErrorMsg('')
-
         const body = {
-            Fname: e.currentTarget.Fname.value,
-            Lname: e.currentTarget.Lname.value,
-            usernamehttp: e.currentTarget.username.value,
-            password: e.currentTarget.password.value,
-            pfp: ""
-        }
-        if (body.password !== e.currentTarget.rpassword.value) {
-            setErrorMsg(`The passwords don't match`)
-            return
+            Fname: Fname,
+            Lname: Lname,
+            Username: username,
+            Password: password,
+            pfp: pfp
         }
         let res = null
         res = await fetch('/api/signup', {
@@ -127,7 +141,7 @@ export default function Signup() {
         })
         if (res.status === 200) {
             console.log("ok")
-            // Router.push('/login')
+            Router.push("/login")
         }
     }
 
@@ -142,6 +156,20 @@ export default function Signup() {
     } else if (counter == 2) {
         return <>
             <AskPfp />
+        </>
+    } 
+    // TODO: Implement!
+    else if (counter == 3) {
+        return <>
+            <AskToFollow />
+        </>
+    } else if (counter == 4) {
+        return <>
+            <AskQuizToAttempt />
+        </>
+    } else if (counter == 5) {
+        return <>
+            <ShowRandomQuizTopic />
         </>
     }
 
