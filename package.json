@@ -19,6 +19,7 @@
     "passport-local": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-easy-crop": "^5.0.0",
     "swr": "^2.1.5",
     "uuid": "8.3.1"
   },

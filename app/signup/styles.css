@@ -70,3 +70,72 @@
     padding: 10px;
 
 }
+
+
+.AskCredentials {
+    background: #333;
+    width: 100vw;
+    height: 100vh;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AskCredentials>.container>form>h1 {
+    color: white;
+    font-size: 7rem;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 100px;
+}
+
+.AskCredentials>.container>form>.inputs>.usernameInput>input,
+.AskCredentials>.container>form>.inputs>.passwordInput>input {
+    text-align: center;
+    outline: none;
+
+    flex: 0 0 0%;
+
+    font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    width: 300px;
+    padding: 10px 35px;
+}
+
+.AskCredentials>.container>form>.inputs>.usernameInput>input{
+    margin-bottom: 30px;
+}
+.AskCredentials>.container>form>button {
+    font-family: 'Roboto mono';
+    font-size: 2rem;
+
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    border: 3px solid #ffffff80;
+
+    background-color: #7600bc;
+    color: white;
+    width: fit-content;
+
+
+
+    align-self: flex-end;
+    margin-top: 70px;
+    padding: 10px;
+
+}
+
+.AskCredentials>.container>form {
+    display: flex;
+    flex-direction: column;
+}
+.AskCredentials>.container>form>.inputs {
+    display: flex;
+    flex-direction: column;
+    align-self:center;
+
+    gap: 10px;
+}

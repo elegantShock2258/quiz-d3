@@ -1,7 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './styles.css'
-
+import ReactImagePickerEditor, { ImagePickerConf } from 'react-image-picker-editor';
+import 'react-image-picker-editor/dist/index.css'
 
 
 
@@ -17,18 +18,17 @@ import './styles.css'
 
 export default function Signup() {
 
-    let Lname ="",
-        Fname  = "",
-        username= "",
+    let Lname = "",
+        Fname = "",
+        username = "",
         password = "",
-        repass = "",
         pfp = "";
 
-    function handleSubmitNames(e){
+    function handleSubmitNames(e) {
         Fname = e.currentTarget["0"].value
         Lname = e.currentTarget["1"].value
 
-        console.log(Fname,Lname)
+        console.log(Fname, Lname)
         setCounter(1)
     }
     function AskNames() {
@@ -51,8 +51,57 @@ export default function Signup() {
             </div >
         </>
     }
+    function handleSubmitCreds(e) {
+        let lpassword = e.currentTarget["1"].value
+        let lrpassword = e.currentTarget["2"].value
 
-    const [counter, setCounter] = useState(0)
+        if (lpassword == lrpassword) {
+            password = e.currentTarget["1"].value
+            username = e.currentTarget["0"].value
+            setCounter(2)
+        } else {
+            //pass wont match
+            console.log("Passwords dont match")
+        }
+    }
+    function AskCredentials() {
+        return <div className='AskCredentials'>
+            <div className='container'>
+                <form onSubmit={handleSubmitCreds}>
+                    <h1>Identify Yourself</h1>
+                    <div className='inputs'>
+                        <div className='usernameInput'>
+                            <input name="username" type="text" placeholder='Enter Your Username' required></input>
+                        </div>
+
+                        <div className='passwordInput'>
+                            <input name="password" type="password" placeholder='Enter Your Password' required></input>
+                        </div>
+
+                        <div className='passwordInput'>
+                            <input name="rpassword" type="password" placeholder='Re-Enter Your Password' required></input>
+                        </div>
+
+                    </div>
+                    <button type="submit">Next</button>
+                </form>
+            </div>
+        </div>
+    }
+
+    function handleOnchange(e){
+
+    }
+
+    function AskPfp() {
+        let imageInput = useRef()
+        return <div className='AskCredentials'>
+            <div className='container'>
+            
+            </div>
+        </div>
+    }
+    const [counter, setCounter] = useState(2)
     const [errorMsg, setErrorMsg] = useState('')
 
     async function handleSubmit(e) {
@@ -62,7 +111,7 @@ export default function Signup() {
         const body = {
             Fname: e.currentTarget.Fname.value,
             Lname: e.currentTarget.Lname.value,
-            username: e.currentTarget.username.value,
+            usernamehttp: e.currentTarget.username.value,
             password: e.currentTarget.password.value,
             pfp: ""
         }
@@ -85,6 +134,14 @@ export default function Signup() {
     if (counter == 0) {
         return <>
             <AskNames />
+        </>
+    } else if (counter == 1) {
+        return <>
+            <AskCredentials />
+        </>
+    } else if (counter == 2) {
+        return <>
+            <AskPfp />
         </>
     }
 
