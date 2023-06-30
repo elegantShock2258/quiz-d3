@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getLoginSession } from '../../../lib/auth'
-import { findUser, getUser, removeUser } from '../../../lib/user'
+import { getUser, removeUser } from '../../../lib/user'
 
 export async function POST(req) {
   let data = await req.json()
@@ -8,9 +7,10 @@ export async function POST(req) {
     removeUser(data.token)
   } else {
     try {
-      const session = await getLoginSession(req)
+      //get user
       const [user, found] = await getUser(data.username)
-      return NextResponse.json(user)
+      return NextResponse.json(found ? user : {message:"not found"})
+
     } catch (error) {
       console.error(error)
     }

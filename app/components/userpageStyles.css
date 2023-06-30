@@ -1,0 +1,125 @@
+* {
+    --nyanza: #d6f9ddff;
+    --light-green: #99f7abff;
+    --onyx: #36393bff;
+    --rosy-brown: #c49799ff;
+    --pale-purple: #e8d7ffff;
+}
+
+body {
+    background-color: #fecdaa;
+
+    margin: 0;
+    border: none;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+* {
+
+    color: --onyx;
+}
+
+.profileInfo {
+    display: flex;
+    gap: 60px;
+}
+
+.parent {
+    padding: 20px;
+}
+
+button {
+    outline: none;
+    border: none;
+
+    background-color: transparent;
+
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 2rem;
+
+    border: 1px solid black;
+    padding: 0px 10px;
+    border-radius: 10px;
+
+
+
+}
+
+img {
+    margin-left: 18vw;
+
+    border: 5px solid #000;
+
+
+    width: 15vw;
+    height: 15vw;
+    border-radius: 100%;
+}
+
+.profileData {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    margin-top: 30px;
+}
+
+.username {
+    display: flex;
+    gap: 90px;
+}
+
+
+.dataBar {
+    display: flex;
+    font-size: 1.3rem;
+    width: 30vw;
+    justify-content: space-between;
+}
+
+.dataBar>span {
+    font-family: 'Roboto mono', monospace;
+
+}
+
+
+
+.Score {
+    margin-top: 20px;
+
+}
+
+.Name {
+    width: fit-content;
+
+    padding: 5px;
+    margin-left: 0px;
+
+    font-size: 2rem;
+    font-family: sans;
+    font-weight: 700;
+
+    border-bottom: #000 3px solid;
+
+    font-family: 'Abril Fatface', cursive;
+}
+
+.Bio {
+    margin-top: 10px;
+    padding: 5px;
+
+    height: 10vh;
+    font-family: sans;
+
+    border-radius: 5px;
+
+    font-family: 'Alice', serif;
+    font-size: 1.3em;
+}
+
+h1 {
+    text-align: center;
+}
