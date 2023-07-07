@@ -1,14 +1,14 @@
-1) implement auth: (usename pass, email,phone,google,microsoft,twitter , dauth)
+'1) implement auth: (usename pass, email,phone,google,microsoft,twitter , dauth)
 2) every user can:
 	i) create quizzes
 	ii) change their pfp
-	iii) have a personal page for them which shows thier quizzes
+	iii)[X] have a personal page for them which shows thier quizzes
 	iv) search other users by username
 	v)  see the quizzes they took and score
 	vi) send  freind requets
 	vii) private quizzes
 	viii) addting tags to quizzes so they can be searched
-	ix) in a user's quiz add a leaderboard 
+	ix) in a user\'s quiz add a leaderboard 
 	x) create a reccomendation system reccomending friends
 	xi) add notifications
 ui:
@@ -53,3 +53,14 @@ iii) see final score and leaderboard
 private quiz ui:
 i) ask for auth (again)
 ii)same shit as public quiz
+
+
+
+quiz object:
+	1) Array of questions
+	2) question:
+		i) MCQ
+		ii) MSQ
+		iii) FIB
+		iv)  ~Matrix
+		

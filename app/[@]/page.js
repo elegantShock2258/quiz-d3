@@ -1,10 +1,9 @@
 'use client'
-import { usePathname } from "next/navigation"
 
+import React, { } from "react";
+import { usePathname } from "next/navigation"
 import UserPage from "../components/userpage"
 import QuizPage from "../components/quizpage"
-import React, { } from "react";
-import { findQuiz } from "../../lib/user"
 
 export default async function Page() {
     let returnElement = (<>
@@ -30,14 +29,18 @@ export default async function Page() {
         }
     } else if (pathname[1] === 'q') {
         let quizName = pathname.slice(2)
-
-        let [found, quizObject, userCreated] = await findQuiz(quizName)
+        const res = await fetch('http://localhost:3000/api/quiz', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ quizName: quizName, remove: false }),
+        }, { cache: 'no-store' })
+        let [found, quizObject, userCreated] = await res.json()
         if (found) {
-            returnElement = (
+            return (
                 <QuizPage quiz={quizObject} userCreated={userCreated}></QuizPage>
             )
         } else {
-            returnElement = (<QuizPage quiz={-1}></QuizPage>)
+            return (<QuizPage quiz={-1}></QuizPage>)
         }
     }
     return returnElement

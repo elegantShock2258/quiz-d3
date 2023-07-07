@@ -1,7 +1,6 @@
 'use client'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Head from 'next/head'
 import { AnimatePresence } from "framer-motion";
 
 import './userpageStyles.css'
@@ -24,17 +23,13 @@ const UserPage = (props) => {
             visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
         }
 
-
-
-
         useEffect(() => {
             document.title = `${props.user.FirstName} ${props.user.LastName}`
         })
 
         return <AnimatePresence mode="wait">
-
             <motion.div className='parent' initial="hidden" animate="visible" >
-                <motion.div className="profileInfo" variants={initialAnimVariantDown}>
+                <motion.div className="profileInfo" >
                     <motion.img src={props.user.ProfilePic}
                         variants={initialAnimVariantDown}
                         id="pfp"></motion.img>
@@ -42,7 +37,7 @@ const UserPage = (props) => {
                         <motion.div variants={initialAnimVariantDown} className="username">
                             <motion.div variants={initialAnimVariantDown} className="Name">{props.user.FirstName} {props.user.LastName}</motion.div>
                             {/* TODO: implement follow requests */}
-                            <motion.button variants={initialAnimVariantDown} whileHover={{ backgroundColor: "black", color: "white", border: "1px solid white", borderRadius: "14px" }} className="followBtn">Follow</motion.button>
+                            <motion.button variants={initialAnimVariantDown} whileHover={{ backgroundColor: "black", color: "white", border: "1px solid white", borderRadius: "14px" }}  transition={{ duration: 2,ease:"linear",type:"tween" }} className="followBtn">Follow</motion.button>
 
                         </motion.div>
                         <motion.div variants={initialAnimVariantDown} className="dataBar">
