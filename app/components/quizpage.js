@@ -4,6 +4,7 @@ function Question(props) {
     let question = props.question
     console.log(question)
 
+    let questionText = question.text
     //FIB,MCQ,MSQ,Matrix,Subjective,Numerical,Integer
     if (question.type === 'FIB') {
         let finder = "😊"
@@ -54,17 +55,90 @@ function Question(props) {
                 </form>
             </div>
         </div>
-
-
-
     } else if (question.type === 'Matrix') {
+        let numRow = question.cols[0].length
+        let table = []
 
+        for (let i = 0; i < question.cols.length; i++) {
+            let tableRow = []
+            for (let j = 0; j < numRow; j++) {
+                tableRow.push(<td>{question.cols[i][j]}</td>)
+            }
+            table.push(<tr>{tableRow.length ? tableRow : <div>empty</div>}</tr>)
+        }
+
+        return <div className='MatrixContainer'>
+            <div className='MatrixContainerText'>{questionText}</div>
+            <div className='MatrixTableContainer'>
+                <table>
+                    {table.length ? table : null}
+                </table>
+            </div>
+        </div>
     } else if (question.type === 'Subjective') {
-
+        return <div className='SubjectiveContainer'>
+            <div className='SubjectiveContainerText'>{"" + questionText}</div>
+            <div className='SubjectiveContainerInput'>
+                <input type='text' className='subjectiveInput' ></input>
+            </div>
+        </div>
     } else if (question.type === 'Numerical') {
-
+        return <div className='NumericalContainer'>
+            <div className='NumericalContainerText'>{"" + questionText}</div>
+            <div className='SubjectiveContainerInput'>
+                <input readOnly='true' type='number' className='subjectiveInput' ></input>
+                <table>
+                    <tr>
+                        <td><button className='numericalButton'>1</button></td>
+                        <td><button className='numericalButton'>2</button></td>
+                        <td><button className='numericalButton'>3</button></td>
+                    </tr>
+                    <tr>
+                        <td><button className='numericalButton'>4</button></td>
+                        <td><button className='numericalButton'>5</button></td>
+                        <td><button className='numericalButton'>6</button></td>
+                    </tr>
+                    <tr>
+                        <td><button className='numericalButton'>7</button></td>
+                        <td><button className='numericalButton'>8</button></td>
+                        <td><button className='numericalButton'>9</button></td>
+                    </tr>
+                    <tr>
+                        <td><button className='numericalButton'>0</button></td>
+                        <td><button className='numericalButton'>.</button></td>
+                        <td><button className='numericalButton'>c</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     } else if (question.type === 'Integer') {
-
+        return <div className='IntegerContainer'>
+            <div className='IntegerContainerText'>{questionText}</div>
+            <div className='SubjectiveContainerInput'>
+                <input readOnly='true' type='number' className='subjectiveInput' ></input>
+                <table>
+                    <tr>
+                        <td><button className='numericalButton'>1</button></td>
+                        <td><button className='numericalButton'>2</button></td>
+                        <td><button className='numericalButton'>3</button></td>
+                    </tr>
+                    <tr>
+                        <td><button className='numericalButton'>4</button></td>
+                        <td><button className='numericalButton'>5</button></td>
+                        <td><button className='numericalButton'>6</button></td>
+                    </tr>
+                    <tr>
+                        <td><button className='numericalButton'>7</button></td>
+                        <td><button className='numericalButton'>8</button></td>
+                        <td><button className='numericalButton'>9</button></td>
+                    </tr>
+                    <tr>
+                        <td><button className='numericalButton'>0</button></td>
+                        <td colSpan={2}><button className='numericalButton'>clear</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div >
     }
 
     return <>
