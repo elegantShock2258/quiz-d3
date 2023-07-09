@@ -25,14 +25,14 @@ const initialImage = ''; //default pfp img
 // 6) topics to make quiz in 
 
 //TODO: add back button
-
+// TODO : dont let register for existing username, check ifpass are same
 export default function Signup() {
 
-    let [Lname,setLname] = useState(""),
-        [Fname,setFname] = useState(""),
-        [username,setUsername] = useState(""),
-        [password,setPassword] = useState(""),
-        pfp = "";
+    let [Lname, setLname] = useState(""),
+        [Fname, setFname] = useState(""),
+        [username, setUsername] = useState(""),
+        [password, setPassword] = useState(""),
+        pfp = "profile";
 
     function handleSubmitNames(e) {
         setFname(e.currentTarget["0"].value)
@@ -104,7 +104,7 @@ export default function Signup() {
 
         let [pfpThere, setPfpThere] = useState("Skip")
         function setImageSrc(newDataUri) {
-            pfp = (newDataUri)
+            pfp = (newDataUri == null) ? newDataUri : "" ///TODO: replace "" with default pfp 
             if (pfp != null && pfp != initialImage && pfp != undefined && pfpThere != "Next") setPfpThere("Next")
         }
         function submitPfp(e) {
@@ -128,6 +128,7 @@ export default function Signup() {
 
     async function handleSubmit(e) {
         if (errorMsg) setErrorMsg('')
+        pfp = pfp == null ? "" : pfp
         const body = {
             Fname: Fname,
             Lname: Lname,
@@ -159,20 +160,20 @@ export default function Signup() {
         return <>
             <AskPfp />
         </>
-    } 
-    // TODO: Implement!
-    else if (counter == 3) {
-        return <>
-            <AskToFollow />
-        </>
-    } else if (counter == 4) {
-        return <>
-            <AskQuizToAttempt />
-        </>
-    } else if (counter == 5) {
-        return <>
-            <ShowRandomQuizTopic />
-        </>
     }
+    // TODO: Implement!
+    // else if (counter == 3) {
+    //     return <>
+    //         <AskToFollow />
+    //     </>
+    // } else if (counter == 4) {
+    //     return <>
+    //         <AskQuizToAttempt />
+    //     </>
+    // } else if (counter == 5) {
+    //     return <>
+    //         <ShowRandomQuizTopic />
+    //     </>
+    // }
 
 }

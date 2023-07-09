@@ -5,7 +5,6 @@ import './loginStyles.css'
 const Login = () => {
   // useUser({ redirectTo: '/', redirectIfFound: true })
 
-  let router = useRouter()
   const [errorMsg, setErrorMsg] = useState('')
 
   async function handleSubmit(e) {
@@ -14,7 +13,7 @@ const Login = () => {
     if (errorMsg) setErrorMsg('')
 
     const body = {
-      username: e.currentTarget.username.value,
+      username: e.currentTarget.username.value == "Anonymous" ? null : e.currentTarget.username.value,
       password: e.currentTarget.password.value,
     }
 
@@ -26,7 +25,8 @@ const Login = () => {
     })
     console.log("helo", res.status)
     if (res.status === 200) {
-      router.push("/")
+      window.location = "/"
+
     }
 
   }
@@ -41,7 +41,7 @@ const Login = () => {
             <input type="password" className="password" name="password" placeholder="Enter Password" required />
             <div className='buttons'>
               <button className='loginBtn' type="submit" >Login</button>
-              <button className='register' onClick={()=>{window.location="/signup"}} >Register</button>
+              <button className='register' onClick={() => { window.location = "/signup" }} >Register</button>
             </div>
           </form>
         </div>

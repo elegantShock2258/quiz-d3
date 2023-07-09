@@ -11,7 +11,6 @@ const Home = async () => {
     let [foundUser, setFoundUser] = useState(userToken != null && userToken != undefined)
     let user = null
 
-    let UserContext = createContext({ Username: "Anonymous", FirstName: "Anon", LastName: "nymous", Followers: [], Following: [], QuizAttempted: [], QuizMade: [], Bio: "This user is likes to keep themselves at a distance from us", ProfilePic: "" })
 
     if (foundUser && userToken != null) {
         let username = userToken.split(" ")[0].replace("\"", "")
@@ -35,12 +34,17 @@ const Home = async () => {
             })
             window.location.reload()
         }
+
+        function createQuiz(){
+            window.location = '/createQuiz'
+        }
+
+
         return <>
-            <UserContext.Provider>
                 <button onClick={logout}>Logout</button>
                 <p>Currently logged in as:</p>
                 <span>{user.FirstName}</span>
-            </UserContext.Provider>
+                <button onClick={createQuiz}> create quiz</button>
         </>
     } else {
         return <>
