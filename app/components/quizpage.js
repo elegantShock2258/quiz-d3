@@ -1,7 +1,8 @@
-'use client'
 import { useRef, useState } from 'react'
 import './quizPageStyles.css'
 
+// FIXME: MCQ question currently arent even  looked at if theyre not attempted
+// show -ve and +ve marks
 function Question(props) {
     let question = props.question
     console.log(question)
@@ -77,7 +78,6 @@ function Question(props) {
 
         for (let i = 0; i < question.options.length; i++) {
             options[i] = <div><input className='MSQCheckbox' id={(checked == i) ? "answer" + props.id : ""} type="radio" checked={checked === i} onChange={(e) => { setChecked(i); }} value={question.options[i]} /> {question.options[i]} </div>
-
         }
         return <div className='MSQContainer'>
             <div className='MSQQuestionText'>{questionText}</div>
@@ -234,18 +234,37 @@ function Question(props) {
 
 
 const QuizPage = (props) => {
-    function submitAnswers() {
+    async function submitAnswers() {
         let answers = [...document.querySelectorAll('[id^="answer"]')].map(e => {
+            console.log(e)
             if (e.classList.contains('MSQ')) {
                 if (e.innerText != "")
                     return JSON.parse(e.innerText)
-                else 
+                else
                     return ""
             } else {
                 return e.value
             }
         });
-        console.log(answers)
+
+        // get user context
+        let t = {}
+        t["Username"] = "anon" //change 
+        t["answers"] = answers
+        t["score"] = "placeholder, this shouldnt appear"
+        t["negMarks"] = "placeholder, this shouldnt appear"
+        t["leftQuestions"] = "placeholder, this shouldnt appear"
+        t["unVisitedQuestions"] = "placeholder, this shouldnt appear"
+        
+        const res = await fetch('/api/quiz', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ submit: true, attempt: t, quizId: props.id, userCreated: props.userCreated }),
+        }).then((data) => {
+            return data
+        })
+
+        console.log(res)
     }
     let content = []
     let answers = []
@@ -267,5 +286,5 @@ const QuizPage = (props) => {
 }
 // on input interacion put a class "interacted" to it, to indicate it interacted, if question is MSQ or any other, remove "interacted" if unselected 
 //while submision do document.querySelector("input[class="interacted"]") and the array of inputs (with valid values) is the list of answers
-
+// TODO: UI:  show pfp of usercreated and attempting user side by side
 export default QuizPage

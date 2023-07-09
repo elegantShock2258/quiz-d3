@@ -1,7 +1,7 @@
 'use client'
 import { getCookie, deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import DefaultPage from './defalutPages/defaultRootPage';
 import { removeUser } from '../lib/user';
 
@@ -10,6 +10,8 @@ const Home = async () => {
     let userToken = getCookie('token')
     let [foundUser, setFoundUser] = useState(userToken != null && userToken != undefined)
     let user = null
+
+    let UserContext = createContext({ Username: "Anonymous", FirstName: "Anon", LastName: "nymous", Followers: [], Following: [], QuizAttempted: [], QuizMade: [], Bio: "This user is likes to keep themselves at a distance from us", ProfilePic: "" })
 
     if (foundUser && userToken != null) {
         let username = userToken.split(" ")[0].replace("\"", "")
@@ -34,9 +36,11 @@ const Home = async () => {
             window.location.reload()
         }
         return <>
-            <button onClick={logout}>Logout</button>
-            <p>Currently logged in as:</p>
-            <span>{user.FirstName}</span>
+            <UserContext.Provider>
+                <button onClick={logout}>Logout</button>
+                <p>Currently logged in as:</p>
+                <span>{user.FirstName}</span>
+            </UserContext.Provider>
         </>
     } else {
         return <>

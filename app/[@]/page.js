@@ -32,12 +32,12 @@ export default async function Page() {
         const res = await fetch('http://localhost:3000/api/quiz', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ quizName: quizName, remove: false }),
+            body: JSON.stringify({ quizName: quizName, remove: false, submit: false }),
         }, { cache: 'no-store' })
         let [found, quizObject, userCreated] = await res.json()
         if (found) {
             return (
-                <QuizPage quiz={quizObject} userCreated={userCreated}></QuizPage>
+                <QuizPage quiz={quizObject} id={quizName} userCreated={userCreated}></QuizPage>
             )
         } else {
             return (<QuizPage quiz={-1}></QuizPage>)
