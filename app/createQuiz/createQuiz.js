@@ -150,7 +150,6 @@ function CreateQuestion(props) {
                 <h3>Int Question</h3>
             </div>
             )
-
         }
         setOptions(options)
     }

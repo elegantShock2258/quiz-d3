@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { getCookie, deleteCookie } from 'cookies-next';
 import './quizPageStyles.css'
 
 // FIXME: MCQ question currently arent even  looked at if theyre not attempted
@@ -247,15 +248,25 @@ const QuizPage = (props) => {
             }
         });
 
+        let userToken = getCookie('token')
+        const resu = await fetch('/api/user', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userToken: userToken, remove: false }),
+        }).then((data) => {
+            return data
+        })
+        let user = await resu.json()
+        console.log(user)
         // get user context
         let t = {}
-        t["Username"] = "anon" //change 
+        t["Username"] = user.Username
         t["answers"] = answers
         t["score"] = "placeholder, this shouldnt appear"
         t["negMarks"] = "placeholder, this shouldnt appear"
         t["leftQuestions"] = "placeholder, this shouldnt appear"
         t["unVisitedQuestions"] = "placeholder, this shouldnt appear"
-        
+
         const res = await fetch('/api/quiz', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -263,6 +274,7 @@ const QuizPage = (props) => {
         }).then((data) => {
             return data
         })
+
 
         // console.log(await res.json())
     }
