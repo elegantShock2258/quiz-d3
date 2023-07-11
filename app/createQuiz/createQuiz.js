@@ -55,10 +55,7 @@ function CreateQuestion(props) {
         console.log(thisQuestion, MCQOptions, thisQuestionUI)
         props.questions.push(<div>{thisQuestionUI}<hr /></div>)
 
-        // props.setQuestions(props.questions)
         props.setQuestions(props.questions)
-        // let r1 = (props.r == null) ? createRoot(document.getElementById("insertQuestion")) : props.r
-        // r1.render(<div>{props.question}</div>)
 
         setElement(<></>)
         document.getElementById("questionText").value = ""
@@ -68,13 +65,40 @@ function CreateQuestion(props) {
         let ed = document.getElementById("questionType")
         options = (ed.options[0].value)
         setOptions(options)
+
+        MCQOptions = []
+        setMCQOptions(MCQOptions)
     }
 
     function handleOptionChange(e) {
         options = (e.target.options[e.target.options.selectedIndex].value)
         console.log(options)
         if (options === "MSQ") {
-            setElement(<h1> MSQ</h1>)
+            let MCQOptionsUI = []
+            let root = null
+
+            function addOption(e) {
+                e.preventDefault()
+
+                let optionLabel = document.getElementById('optionInput').value
+
+                MCQOptions.push(optionLabel)
+                setMCQOptions(MCQOptions)
+                MCQOptionsUI.push(<div> {MCQOptions.length}: {optionLabel}</div>)
+
+                console.log(MCQOptions)
+                root = (root == null) ? createRoot(document.getElementById("MCQOptions")) : root
+
+                root.render(<div>{MCQOptionsUI}</div>)
+            }
+
+            setElement(<div>
+                <h3> MSQ</h3>
+                <input id="optionInput" type="text" placeholder='enter option label' />
+                <button onClick={addOption}>Add MCQ Option</button>
+                <div id="MCQOptions"></div>
+            </div>
+            )
         } else if (options === "MCQ") {
             let MCQOptionsUI = []
             let root = null

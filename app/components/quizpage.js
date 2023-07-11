@@ -264,7 +264,7 @@ const QuizPage = (props) => {
             return data
         })
 
-        console.log(res)
+        // console.log(await res.json())
     }
     let content = []
     let answers = []

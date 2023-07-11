@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 export async function POST(req) {
     let data = await req.json()
     if(data.submit){
+        // console.log("put attempt hua? ",data)
         let response = await putAttempt(data.attempt,data.quizId,data.userCreated)
         return NextResponse.json(response)
     }
