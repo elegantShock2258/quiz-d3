@@ -59,6 +59,15 @@ function CreateQuestion(props) {
         props.setQuestions(props.questions)
         // let r1 = (props.r == null) ? createRoot(document.getElementById("insertQuestion")) : props.r
         // r1.render(<div>{props.question}</div>)
+
+        setElement(<></>)
+        document.getElementById("questionText").value = ""
+        document.getElementById("posMarks").value = ""
+        document.getElementById("negMarks").value = ""
+        document.getElementById("correct").value = ""
+        let ed = document.getElementById("questionType")
+        options = (ed.options[0].value)
+        setOptions(options)
     }
 
     function handleOptionChange(e) {
