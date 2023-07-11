@@ -1,9 +1,12 @@
-function CreateQuiz(){
-    let quizObj = []
-    return <>
-        
-        <button> + </button>
-    </>
-}
+import dynamic from 'next/dynamic'
 
-export default CreateQuiz
+
+const RootLayout = dynamic(() => import('./createQuiz'), {
+	ssr: false,
+})
+
+export default async function Page() {
+	return (
+		<RootLayout />
+	)
+}

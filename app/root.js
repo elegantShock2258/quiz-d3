@@ -1,9 +1,7 @@
 'use client'
 import { getCookie, deleteCookie } from 'cookies-next';
-import { useRouter } from 'next/navigation';
-import { createContext, useContext, useState } from 'react';
+import { useState } from 'react';
 import DefaultPage from './defalutPages/defaultRootPage';
-import { removeUser } from '../lib/user';
 
 const Home = async () => {
     // check if cookie exists

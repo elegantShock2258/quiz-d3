@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import './loginStyles.css'
 const Login = () => {
   // useUser({ redirectTo: '/', redirectIfFound: true })
@@ -26,7 +25,6 @@ const Login = () => {
     console.log("helo", res.status)
     if (res.status === 200) {
       window.location = "/"
-
     }
 
   }

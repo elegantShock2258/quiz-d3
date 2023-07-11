@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server'
 import { validateLocal } from '../../../lib/password-local'
 import { cookies } from 'next/headers'
-import crypto from 'crypto'
-import { PrismaClient } from "@prisma/client"
 import { addToken } from '../../../lib/user'
 
 export async function POST(req, r11) {
+  let data = await req.json()
   if (data.anon) {
     const res = NextResponse.next()
 
@@ -17,7 +16,6 @@ export async function POST(req, r11) {
       status: 200,
     })
   }
-  let data = await req.json()
   validateLocal(data.username, data.password, (e) => { console.log("Logged In", e) })
   console.log(data)
   // makeup cookie 
