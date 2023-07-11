@@ -46,7 +46,8 @@ function CreateQuestion(props) {
         let thisQuestionUI = []
         thisQuestionUI[0] = <h2>{thisQuestion.text}</h2>
         thisQuestionUI[1] = <p>{thisQuestion.type}</p>
-        if (JSON.stringify(thisQuestion.options) != "[]") {
+
+        if (Object.hasOwn(thisQuestion, 'options') && JSON.stringify(thisQuestion.options) != "[]") {
             thisQuestion.options.forEach(element => {
                 thisQuestionUI.push(<div><h3>{thisQuestion.options.indexOf(element)}{")"} {element}</h3></div >)
             });
@@ -127,14 +128,28 @@ function CreateQuestion(props) {
             )
 
         } else if (options === "FIB") {
-
+            setElement(<div>
+                <h3>Fill In The Blank Question</h3>
+                <p> enter the 😊 emoji to indicate blank</p>
+            </div>
+            )
         } else if (options === "Matrix") {
 
         } else if (options === "Subjective") {
-
+            setElement(<div>
+                <h3>Subjective Question</h3>
+            </div>
+            )
         } else if (options === "Numerical") {
-
+            setElement(<div>
+                <h3>Num Question</h3>
+            </div>
+            )
         } else if (options === "Integer") {
+            setElement(<div>
+                <h3>Int Question</h3>
+            </div>
+            )
 
         }
         setOptions(options)
@@ -153,7 +168,7 @@ function CreateQuestion(props) {
                 <option value="MCQ">MCQ</option>
                 <option value="FIB">Fill in the Blanlks</option>
                 <option value="Matrix">Matrix Match</option>
-                <option value="Subjectuve">Subjectuve</option>
+                <option value="Subjective">Subjective</option>
                 <option value="Numerical">Numerical</option>
                 <option value="Integer">Integer</option>
             </select>
