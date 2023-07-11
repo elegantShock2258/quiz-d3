@@ -8,7 +8,7 @@ export async function POST(req) {
   } else {
     try {
       //get user
-      const [user, found] = await getUser(data.username)
+      const [user, found] = await getUser(data.userToken)
       return NextResponse.json(found ? user : {message:"not found"})
 
     } catch (error) {

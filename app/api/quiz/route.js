@@ -1,11 +1,14 @@
-import { findQuiz, putAttempt } from "../../../lib/user"
+import { addQuiz, findQuiz, putAttempt } from "../../../lib/user"
 import { NextResponse } from 'next/server'
 export async function POST(req) {
     let data = await req.json()
     if(data.submit){
-        console.log("FDs")
         let response = await putAttempt(data.attempt,data.quizId,data.userCreated)
         return NextResponse.json(response)
+    }
+    if(data.create){
+        let res = await addQuiz(data.quiz,data.user)
+        return NextResponse.json(res)
     }
     try {
         const [found, quiz, userCreated] = await findQuiz(data.quizName)

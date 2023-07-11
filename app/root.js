@@ -11,11 +11,10 @@ const Home = async () => {
 
 
     if (foundUser && userToken != null) {
-        let username = userToken.split(" ")[0].replace("\"", "")
         const res = await fetch('/api/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: username, remove: false }),
+            body: JSON.stringify({ userToken: userToken, remove: false }),
         }).then((data) => {
             return data
         })
