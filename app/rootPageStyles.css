@@ -84,15 +84,88 @@ img {
     width: 3.5rem;
 }
 
-.lookText{
+.lookText {
     font-family: 'Bebas Neue';
     font-size: 1.5rem;
     letter-spacing: 2px;
 
     padding-left: 10vw;
+    padding-top: 20px;
 }
 
-.feed{
-    background-color:red;
+.feed {
+    display: flex;
+    flex-direction: column;
     height: 100vmax;
+}
+
+.quizCard {
+    align-self: center;
+
+    height: 60vh;
+    width: 40vw;
+    border: 2px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.quizTitle {
+    font-family: 'DM Serif Display' !important;
+    font-size: 4rem;
+    border-bottom: 5px solid;
+}
+
+.nav>img {
+    height: 15vh;
+    width: 15vh;
+    border: none;
+
+
+    margin-left: 0px;
+    margin-top: 0px;
+
+
+}
+
+.nav {
+    margin: 20px;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 5px solid var(--onyx);
+    border-radius: 20px;
+}
+
+.quizInfo{
+    display: flex;
+    justify-content: space-around;
+
+    padding-top: 10px;
+}
+
+.quizInfo > div{
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.5rem;
+}
+.quizMetadata{
+    position: relative;
+    top:17vh;
+    padding: 20px;
+
+    background-color: var(--rosy-brown);
+    margin:10px;
+    border-radius:10px;
+    border: 2px solid black;
+    width: fit-content;
+}
+
+.topics,.tags{
+    font-size: 2rem;
+    font-family: 'Alice', serif;
 }

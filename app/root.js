@@ -34,7 +34,25 @@ async function QuizFeed(props) {
         let thisUserData = await res.json()
         let quizMade = JSON.parse(thisUserData.QuizMade)
         quizMade.forEach((quiz) => {
-            quizzes.push(<button onClick={() => { window.location = `/q${quiz.id}` }}>{thisUserData.Username}</button>)
+            quizzes.push(
+                <div className='quizCard' onClick={() => { window.location = `/q${quiz.id}` }}>
+                    <div className='nav'>
+                        <img src={thisUserData.ProfilePic}></img>
+                        <div className='quizTitle'>{quiz.title}</div>
+                        <span><div className='username'>@{thisUserData.Username}</div></span>
+                    </div>
+                    <div className='quizInfo'>
+                        <div className='time'>Quiz time: <span className='time'>{`${quiz.time > 3600 ? `${Math.floor(quiz.time / 3600)}:` : ""} ${Math.floor(quiz.time / 60) % 60}:${quiz.time % 60}`}</span></div>
+                        <div className='number'>Questions: <span className='number'>{quiz.questions.length}</span></div>
+                        <div className='attempts'>Attempts: <span className='number'>{quiz.attempts.length}</span></div>
+                    </div>
+                    {/* TODO: make more pretty */}
+                    <div className='quizMetadata'>
+                        <div className='topics'>Topics: {JSON.stringify(quiz.topics).replace("[", "").replace("]", "").replaceAll(",", " ").replaceAll("\"", "")}</div>
+                        <div className='tags'>Tags: {JSON.stringify(quiz.hashtags).replace("[", "").replace("]", "").replaceAll(",", " ").replaceAll("\"", "")}</div>
+                    </div>
+                </div>
+            )
         })
     }
 
@@ -44,9 +62,7 @@ async function QuizFeed(props) {
 
 
     return <>
-        <div>
-            {quizzes}
-        </div>
+        {quizzes}
     </>
 
 
