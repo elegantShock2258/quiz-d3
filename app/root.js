@@ -2,7 +2,7 @@
 import { getCookie, deleteCookie } from 'cookies-next';
 import { useState } from 'react';
 import DefaultPage from './defalutPages/defaultRootPage';
-
+import './rootPageStyles.css'
 
 async function QuizFeed(props) {
     let user = props.user
@@ -57,8 +57,9 @@ const Home = async () => {
     let [foundUser, setFoundUser] = useState(userToken != null && userToken != undefined)
     let user = null
 
+    console.log(userToken)
 
-    if (foundUser && userToken != null) {
+    if (foundUser && userToken != null && userToken != undefined) {
         const res = await fetch('/api/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -67,36 +68,44 @@ const Home = async () => {
             return data
         })
         user = await res.json()
+        if (user.Username != "Anonymous") {
+            let logout = async (e) => {
+                deleteCookie('token')
+                const res = await fetch('/api/user', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: userToken, remove: true }),
+                }).then((data) => {
+                    return data
+                })
+                window.location.reload()
+            }
 
-        let logout = async (e) => {
-            deleteCookie('token')
-            const res = await fetch('/api/user', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ token: userToken, remove: true }),
-            }).then((data) => {
-                return data
-            })
-            window.location.reload()
+            function createQuiz() {
+                window.location = '/createQuiz'
+            }
+
+
+            return <>
+                <div className='navBar'> <img src={user.ProfilePic}></img><div className='info'><div className='name'>{user.FirstName} {user.LastName}</div> <div className='username'>@{user.Username}</div></div><button className='logout' onClick={logout}>Logout</button> </div>
+                <div className='feed'>
+                    <div className='lookText'>Try some quizzes!</div>
+                    <QuizFeed user={user} />
+                </div>
+                <button className='addQuiz' onClick={createQuiz}>+</button>
+            </>
         }
-
-        function createQuiz() {
-            window.location = '/createQuiz'
-        }
-
-
-        return <>
-            <button onClick={logout}>Logout</button>
-            <p>Currently logged in as:</p>
-            <span>{user.FirstName}</span>
-            <QuizFeed user={user} />
-            <button onClick={createQuiz}> create quiz</button>
-        </>
     } else {
-        return <>
-            <DefaultPage />
-        </>
+        const res = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ anon: true }),
+        })
     }
+    return <>
+        <DefaultPage />
+    </>
+
 
 }
 

@@ -1,0 +1,98 @@
+.navBar {
+    display: flex;
+    width: 100vw;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+img {
+    margin-left: 20px;
+    margin-top: 20px;
+
+
+    border: #000 4px solid;
+
+    height: 11vw;
+    border-radius: 100%;
+}
+
+.name {
+    font-family: 'Abril Fatface', serif;
+    font-size: 7rem;
+
+    border-bottom: #000 4px solid;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    margin-left: -10vw;
+}
+
+.username {
+    padding: 8px;
+    margin: 5px;
+
+    font-size: 1.3rem;
+    font-family: 'DM Serif Display' !important;
+
+    text-align: center;
+
+    background-color: var(--rosy-brown);
+    color: white;
+    width: fit-content;
+    border: 3px solid black;
+    border-radius: 10px;
+
+    align-self: center;
+}
+
+.logout {
+    background-color: var(--pale-purple);
+    outline: none;
+    border: none;
+    margin: 15px;
+
+    align-self: flex-start;
+    font-family: 'DM Serif Display' !important;
+    font-size: 1.3rem;
+
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.addQuiz {
+    position: absolute;
+    z-index: 2;
+
+    top: 100vh;
+    left: 100vw;
+
+
+    transform: translate(-100%, -100%);
+    margin: -20px;
+    padding: 5px 0px;
+    border: none;
+    background-color: var(--rosy-brown);
+    border: 3px solid black;
+    border-radius: 20%;
+
+    font-size: 2.5rem;
+    width: 3.5rem;
+}
+
+.lookText{
+    font-family: 'Bebas Neue';
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+
+    padding-left: 10vw;
+}
+
+.feed{
+    background-color:red;
+    height: 100vmax;
+}

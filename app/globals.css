@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Press+Start+2P&family=Roboto+Mono:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Agdasima:wght@700&family=Bacasime+Antique&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alice&family=DM+Serif+Display:ital@0;1&family=Yeseva+One&display=swap');
-
 @font-face {
     font-family: 'Gunsan Script';
     src: url('/Assets/Fonts/gunsan/Gunsan\ Script.ttf') format('truetype');
@@ -12,3 +12,13 @@
     font-family: 'Gunsan';
     src: url('/Assets/Fonts/gunsan/Gunsan.ttf') format('truetype');
 }
+
+* {
+    --nyanza: #d6f9ddff;
+    --light-green: #99f7abff;
+    --onyx: #36393bff;
+    --rosy-brown: #c49799ff;
+    --pale-purple: #e8d7ffff;
+    --background: #fdcfae;
+}
+

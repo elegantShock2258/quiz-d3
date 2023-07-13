@@ -16,7 +16,7 @@ export default async function Page() {
         const res = await fetch('http://localhost:3000/api/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: username, remove: false }),
+            body: JSON.stringify({ readUser: username, read: true }),
         }, { cache: 'no-store' })
         currentUser = await res.json()
 

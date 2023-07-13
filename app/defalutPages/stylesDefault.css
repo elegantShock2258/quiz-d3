@@ -1,5 +1,14 @@
+* {
+    --nyanza: #d6f9ddff;
+    --light-green: #99f7abff;
+    --onyx: #36393bff;
+    --rosy-brown: #c49799ff;
+    --pale-purple: #e8d7ffff;
+    --background: #fdcfae;
+}
+
 body {
-    background-color: #333;
+    background-color: #fdcfae;
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -12,9 +21,10 @@ body {
 
 .quiz {
     margin: 0;
-    color: aliceblue;
-    font-size: 6rem;
-    font-family: 'Lobster', cursive;
+    color: black;
+    font-size: 7.5rem;
+    font-weight: 100;
+    font-family: 'Abril Fatface', cursive;
 }
 
 .navbar {
@@ -35,32 +45,34 @@ body {
 
     align-self: center;
 }
-form{
-    border:none;
-    outline:none;
+
+form {
+    border: none;
+    outline: none;
 }
+
 .login {
 
-    font-family: 'Roboto Mono', monospace;
-    padding: 5px;
+    font-family: 'Abril Fatface', cursive;
+    padding: 4px 20px;
     margin-right: 10px;
-    font-size: 1.3rem;
-    font-weight: 800;
-    background-color:#7600bc;
-    color:aliceblue;
+    font-size: 2rem;
+    font-weight: 900;
+    border: 2px solid black;
 
     border-radius: 10px;
 }
 
-.button {
-    font-size: 1.8rem;
+.button ,dialog > button{
+    font-size: 3rem;
     text-align: center;
-    font-family: 'Caprasimo', cursive;
-    color:white;
+    font-family: 'Abril Fatface', cursive;
 
-    background-color:#333;
+    color: white;
+    border: 2px solid var(--rosy-brown);
+
     padding: 10px;
-    border-radius:5px;
+    border-radius: 5px;
 }
 
 input {
@@ -70,7 +82,7 @@ input {
     height: 4.5vh;
     margin-bottom: 10px;
     border: 3px solid #00000050;
-    border-radius:3px;
+    border-radius: 3px;
     width: 16vw;
 
     font-family: 'Roboto Mono', monospace;
@@ -78,12 +90,34 @@ input {
     font-weight: 900;
     outline: none;
 }
-.quizId{
+
+.quizId {
     margin-top: 20px;
-    background-color:#7600bc;
+    background-color: var(--onyx);
 
     padding: 20px;
     width: 17vw;
-    border-radius:10px;
+    border-radius: 10px;
 }
 
+dialog {
+    width: 17vw;
+    border:none;
+    border-radius:10px;
+
+    transform: translate(20vw,-18vh);
+    background-color:var(--onyx);
+
+}
+dialog > h1{
+    font-size: 1.8rem;
+    text-align:center;
+    color:var(--rosy-brown);
+
+    font-family: 'Abril Fatface', cursive;
+}
+dialog>button{
+    font-size: 1.5rem;
+    background-color:transparent;
+
+}

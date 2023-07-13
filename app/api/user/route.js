@@ -6,7 +6,7 @@ export async function POST(req) {
   if (data.remove) {
     removeUser(data.token)
   } else if (data.read) {
-    console.log("data.read is true")
+    console.log("data.read is true",data.readUser)
     const [user, found] = await findUser(data.readUser)
     return NextResponse.json(found ? user : { message: "not found" })
   } else {

@@ -2,8 +2,6 @@
 import { useState } from 'react'
 import './loginStyles.css'
 const Login = () => {
-  // useUser({ redirectTo: '/', redirectIfFound: true })
-
   const [errorMsg, setErrorMsg] = useState('')
 
   async function handleSubmit(e) {
@@ -38,8 +36,8 @@ const Login = () => {
             <input type="text" className="username" name="username" placeholder="Enter Username" required />
             <input type="password" className="password" name="password" placeholder="Enter Password" required />
             <div className='buttons'>
-              <button className='loginBtn' type="submit" >Login</button>
               <button className='register' onClick={() => { window.location = "/signup" }} >Register</button>
+              <button className='loginBtn' type="submit" >Login</button>
             </div>
           </form>
         </div>
