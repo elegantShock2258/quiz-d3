@@ -27,9 +27,9 @@ function Question(props) {
 
         return <div className="FIBContainer">
             <div>
-                {textBefore}
+                <span>{textBefore}</span>
                 <input type="text" id={"answer" + props.id} className="FIBBlank"></input>
-                {textAfter}
+                <span>{textAfter}</span>
             </div>
         </div>
     }
@@ -118,7 +118,7 @@ function Question(props) {
         for (let i = 0; i < question.cols.length; i++) {
             let tableRow = []
             for (let j = 0; j < numRow; j++) {
-                tableRow.push(<td key={j*(i+1)*4+23328}>{question.cols[i][j]}</td>)
+                tableRow.push(<td className='cell' key={j*(i+1)*4+23328}>{question.cols[i][j]}</td>)
             }
             table.push(<tr key={i*54+254}>{tableRow.length ? tableRow : <div>empty</div>}</tr>)
 
@@ -149,7 +149,7 @@ function Question(props) {
         return <div className='SubjectiveContainer'>
             <div className='SubjectiveContainerText'>{"" + questionText}</div>
             <div className='SubjectiveContainerInput'>
-                <input type='text' id={"answer" + props.id} className='subjectiveInput' ></input>
+                <textarea type='text' id={"answer" + props.id} className='subjectiveInput' ></textarea>
             </div>
         </div>
     } else if (question.type === 'Numerical') {
@@ -162,7 +162,7 @@ function Question(props) {
         }
         return <div className='NumericalContainer'>
             <div className='NumericalContainerText'>{"" + questionText}</div>
-            <div className='SubjectiveContainerInput'>
+            <div className='NumericalContainerInput'>
                 <input readOnly={true} id={"answer" + props.id} type='text' value={answerText} className='subjectiveInput' ></input>
                 <table>
                     <tbody>
@@ -200,7 +200,7 @@ function Question(props) {
         }
         return <div className='IntegerContainer'>
             <div className='IntegerContainerText'>{questionText}</div>
-            <div className='SubjectiveContainerInput'>
+            <div className='NumericalContainerInput'>
                 <input readOnly={true} id={"answer" + props.id} type='text' value={answerText} className='subjectiveInput' ></input>
                 <table>
                     <tbody>

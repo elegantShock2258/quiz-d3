@@ -1,19 +1,22 @@
-*{
-    border:inherit;
-    margin:inherit;
-    padding:inherit;
+* {
+    border: inherit;
+    margin: inherit;
+    padding: inherit;
 
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
-html,body{
-    border:0;
-    margin:none;
+
+html,
+body {
+    border: 0;
+    margin: none;
     padding: 0;
 }
 
-.answerValue{
+.answerValue {
     display: none;
 }
+
 .quizParent {
     box-sizing: border-box;
     padding: 0;
@@ -30,14 +33,138 @@ html,body{
     padding: 0px;
     box-sizing: border-box;
     margin: 0px;
-
+    /* 
     width: 100vw;
     height: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: default;
+    font-style: normal;
+}
+
+.FIBContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    font-family: 'Abril Fatface';
+    font-size: 2rem;
 }
-button{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: default;
+
+.FIBContainer>input {
+    font-size: 2rem;
+}
+
+.MSQContainer {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.MSQQuestionText,
+.NumericalContainerText,
+.IntegerContainerText,
+.SubjectiveContainerText,
+.MatrixContainerText ,.cell{
+    font-family: 'Abril Fatface';
+    font-size: 2rem;
+    align-self: center;
+    margin: 5%;
+}
+
+.optionsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin-left: 5vw;
+    font-family: 'Roboto mono', monospace;
+    font-size: 2rem;
+
+    gap: 50px;
+}
+
+.NumericalContainer,
+.IntegerContainer,
+.SubjectiveContainer,
+.MatrixContainer {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.NumericalContainerInput,
+.IntegerContainerInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.NumericalContainerInput>input {
+    margin-bottom: 50px;
+
+    border: 3px solid black !important;
+    border-radius: 3px;
+}
+
+.numericalButton {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+.SubjectiveContainerInput>textarea {
+    width: 30vw;
+    height: 30vw;
+
+    background-color: var(--rosy-brown);
+    border: 3px solid black;
+    text-align: left;
+    vertical-align: text-top;
+
+    padding: 10px;
+    font-family: 'Roboto mono', monospace;
+    font-size: 1.3rem;
+}
+.MatrixTableContainer{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    gap:20px;
+    width: 100vw;
+}
+.MatrixTableContainer>table{
+    align-self:center;
+    margin:20px;
+}
+.cell{
+    border: 2px solid black;
+    padding: 10px;
+    overflow: default;
+    box-sizing:content-box;
+
+    width: fit-content;
+}
+
+.MatrixTableContainer > .optionsContainer{
+    align-self:flex-start;
+    margin-left: 5vw;
 }
