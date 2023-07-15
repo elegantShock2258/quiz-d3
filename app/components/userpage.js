@@ -11,8 +11,6 @@ const UserPage = (props) => {
         let QuizMade = JSON.parse(props.user.QuizMade)
         let quizzes = []
 
-
-
         let initialAnimVariantDown = {
             hidden: {
                 opacity: 0, y: -20
@@ -30,6 +28,34 @@ const UserPage = (props) => {
             document.title = `${props.user.FirstName} ${props.user.LastName}`
         })
 
+        async function follow(e) {
+            // check if cookie exists
+            let userToken = getCookie('token')
+            let foundUser = (userToken != null && userToken != undefined)
+            let user = null
+
+
+            if (foundUser && userToken != null && userToken != undefined) {
+                const res = await fetch('/api/user', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userToken: userToken, remove: false }),
+                }).then((data) => {
+                    return data
+                })
+                user = await res.json()
+                if (user.Username != "Anonymous") {
+                    const res = await fetch('/api/user', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ userToken: userToken, follow: props.user.Username }),
+                    }).then((data) => {
+                        return data
+                    })
+                }
+            }
+        }
+
         return <AnimatePresence mode="wait">
             <motion.div className='parent' initial="hidden" animate="visible" >
                 <motion.div className="profileInfo" >
@@ -40,7 +66,7 @@ const UserPage = (props) => {
                         <motion.div variants={initialAnimVariantDown} className="username">
                             <motion.div variants={initialAnimVariantDown} className="Name">{props.user.FirstName} {props.user.LastName}</motion.div>
                             {/* TODO: implement follow requests */}
-                            <motion.button variants={initialAnimVariantDown} whileHover={{ backgroundColor: "black", color: "white", border: "1px solid white", borderRadius: "14px" }} transition={{ duration: 2, ease: "linear", type: "tween" }} className="followBtn">Follow</motion.button>
+                            <motion.button variants={initialAnimVariantDown} whileHover={{ backgroundColor: "black", color: "white", border: "1px solid white", borderRadius: "14px" }} transition={{ duration: 2, ease: "linear", type: "tween" }} onClick={follow} className="followBtn">Follow</motion.button>
 
                         </motion.div>
                         <motion.div variants={initialAnimVariantDown} className="dataBar">
