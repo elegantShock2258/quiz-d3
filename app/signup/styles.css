@@ -3,12 +3,14 @@
     border: none;
 }
 
+body {
+    background-color: var(--background)
+}
 
 .AskNames {
     width: 100vw;
     height: 100vh;
 
-    background-color: #333;
 
     display: flex;
     justify-content: center;
@@ -23,15 +25,17 @@
 }
 
 .AskNames>.container>form>h1 {
-    color: white;
-    font-size: 7rem;
+    font-size: 9rem;
     text-align: center;
-    font-family: sans-serif;
+
+    font-family: 'Abril Fatface';
 }
 
 .AskNames>.container>form>.inputs {
     display: flex;
     gap: 300px;
+
+
 }
 
 .AskNames>.container>form>.inputs>.fnameInput,
@@ -47,33 +51,19 @@
     flex: 0 0 0%;
 
     font-family: 'Roboto mono';
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     width: 300px;
     padding: 10px 35px;
 }
 
 .AskNames>.container>form>button {
-    font-family: 'Roboto mono';
-    font-size: 2rem;
 
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    border: 3px solid #ffffff80;
-
-    background-color: #7600bc;
-    color: white;
     width: fit-content;
-
     align-self: flex-end;
-
-    padding: 10px;
-
 }
 
 
 .AskCredentials {
-    background: #333;
     width: 100vw;
     height: 100vh;
 
@@ -84,11 +74,12 @@
 }
 
 .AskCredentials>.container>form>h1 {
-    color: white;
-    font-size: 7rem;
-    text-align: center;
-    font-family: sans-serif;
     margin-bottom: 100px;
+
+    font-size: 9rem;
+    text-align: center;
+
+    font-family: 'Abril Fatface';
 }
 
 .AskCredentials>.container>form>.inputs>.usernameInput>input,
@@ -104,27 +95,12 @@
     padding: 10px 35px;
 }
 
-.AskCredentials>.container>form>.inputs>.usernameInput>input{
+.AskCredentials>.container>form>.inputs>.usernameInput>input {
     margin-bottom: 30px;
 }
+
 .AskCredentials>.container>form>button {
-    font-family: 'Roboto mono';
-    font-size: 2rem;
-
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    border: 3px solid #ffffff80;
-
-    background-color: #7600bc;
-    color: white;
-    width: fit-content;
-
-
-
     align-self: flex-end;
-    margin-top: 70px;
-    padding: 10px;
 
 }
 
@@ -132,10 +108,30 @@
     display: flex;
     flex-direction: column;
 }
+
 .AskCredentials>.container>form>.inputs {
     display: flex;
     flex-direction: column;
-    align-self:center;
+    align-self: center;
 
     gap: 10px;
 }
+
+.AskPfp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.AskPfp>.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    gap: 10px;
+}
+

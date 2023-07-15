@@ -5,7 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { addQuiz, getUser } from '../../lib/user';
-
+import './createQuizStyles.css'
 
 function CreateQuestion(props) {
     let questions = props.questions
@@ -28,7 +28,6 @@ function CreateQuestion(props) {
     }
 
     function saveCreateQuestion(e) {
-        console.log("mcq otpions?", MCQOptions)
         let ele = document.getElementById("questionType")
         let QuestionType = (ele.options[ele.options.selectedIndex].value)
         thisQuestion.type = QuestionType
@@ -174,7 +173,7 @@ function CreateQuestion(props) {
             <br />
 
             {element}
-            <div>
+            <div className='quizInfo'>
                 <input id="posMarks" type="text" placeholder='enter Posiitive marks' />
                 <input id="negMarks" type="text" placeholder='enter Negetive marks' />
                 <input id="correct" type="text" placeholder='enter correct answer' />
@@ -185,12 +184,6 @@ function CreateQuestion(props) {
             <button onClick={cancelCreateQuestion}>Cancel</button>
         </div>
     </>
-
-
-
-
-
-
 }
 
 
@@ -236,6 +229,7 @@ const CreateQuiz = async () => {
             q.id = Math.floor(10234334 * Math.random())
             q.questions = questionsJSON
             q.attempts = []
+            q.title  = document.getElementById("title").value
             console.log(questionsJSON)
             // let r = addQuiz(q, user)
 
@@ -253,8 +247,9 @@ const CreateQuiz = async () => {
             <div>add by pressing the + button, your questions will show here ;{")"}</div>
             <div id='insertQuestion'>{questionsUI}</div>
             <hr />
+            <input type="text" id="title" placeholder='enter quiz title'></input>
             <div id='insertAddQ'></div>
-            <button onClick={handleAdd}>+</button>
+            <button id="add" onClick={handleAdd}>+</button>
             <button onClick={submitQuestion}>submit quiz</button>
         </div>
     }

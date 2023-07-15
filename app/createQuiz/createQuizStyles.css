@@ -1,0 +1,53 @@
+input {
+    font-size: 1.1rem;
+    display: block;
+}
+
+.quizInfo {
+    display: flex;
+    gap: 10px;
+
+    margin: 10px;
+}
+
+#questionText {
+    width: 300px;
+}
+
+h1 {
+    font-family: 'Abril Fatface';
+}
+
+select,
+option {
+    background-color: transparent;
+
+    border: 2px solid black;
+    border-radius: 5px;
+
+    font-family: 'Alice';
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+#title {
+    margin: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 20px;
+
+    font-family: 'Alice';
+    font-size: 1.1rem;
+
+}
+
+#add {
+    font-size: 1.9rem;
+    padding: 0px;
+    border: none;
+}

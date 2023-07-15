@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react'
 import './styles.css'
 import ReactImagePickerEditor, { ImagePickerConf } from 'react-image-picker-editor';
-import 'react-image-picker-editor/dist/index.css'
+// import 'react-image-picker-editor/dist/index.css'
 
 const config2 = {
     borderRadius: '8px',
@@ -32,8 +32,10 @@ export default function Signup() {
         [Fname, setFname] = useState(""),
         [username, setUsername] = useState(""),
         [password, setPassword] = useState(""),
-        pfp = "profile";
+        pfp = initialImage;
 
+    const [counter, setCounter] = useState(3)
+    const [errorMsg, setErrorMsg] = useState('')
     function handleSubmitNames(e) {
         setFname(e.currentTarget["0"].value)
         setLname(e.currentTarget["1"].value)
@@ -55,10 +57,10 @@ export default function Signup() {
                                 <input name="lname" type="text" placeholder='Enter Your Last Name' required></input>
                             </div>
                         </div>
-                        <button type="submit">Next</button>
+                        <button className='loginBtn' type="submit">Next</button>
                     </form>
                 </div>
-            </div >
+            </div>
         </>
     }
     function handleSubmitCreds(e) {
@@ -93,7 +95,7 @@ export default function Signup() {
                         </div>
 
                     </div>
-                    <button type="submit">Next</button>
+                    <button className='loginBtn' type="submit">Next</button>
                 </form>
             </div>
         </div>
@@ -104,28 +106,27 @@ export default function Signup() {
 
         let [pfpThere, setPfpThere] = useState("Skip")
         function setImageSrc(newDataUri) {
-            pfp = (newDataUri == null) ? newDataUri : "" ///TODO: replace "" with default pfp 
-            if (pfp != null && pfp != initialImage && pfp != undefined && pfpThere != "Next") setPfpThere("Next")
+            pfp = (newDataUri == null) ? newDataUri : initialImage
+            if (pfp != initialImage) setPfpThere("Next")
+            else setPfpThere("Skip")
         }
         function submitPfp(e) {
             handleSubmit()
             setCounter(3)
         }
 
-        return <div className='AskCredentials'>
+        return <div className='AskPfp'>
             <div className='container'>
-                < ReactImagePickerEditor
+                <ReactImagePickerEditor
                     config={config2}
                     imageSrcProp={initialImage}
                     imageChanged={(newDataUri) => { setImageSrc(newDataUri) }} />
 
-                <button onClick={submitPfp}>{pfpThere}</button>
+                <button className='loginBtn' onClick={submitPfp}>{pfpThere}</button>
             </div>
         </div>
     }
-    const [counter, setCounter] = useState(0)
-    const [errorMsg, setErrorMsg] = useState('')
-
+    
     async function handleSubmit(e) {
         if (errorMsg) setErrorMsg('')
         pfp = pfp == null ? "" : pfp

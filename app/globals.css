@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Agdasima:wght@700&family=Bacasime+Antique&family=DM+Serif+Display:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alice&family=DM+Serif+Display:ital@0;1&family=Yeseva+One&display=swap');
+
 @font-face {
     font-family: 'Gunsan Script';
     src: url('/Assets/Fonts/gunsan/Gunsan\ Script.ttf') format('truetype');
@@ -22,3 +23,33 @@
     --background: #fdcfae;
 }
 
+input {
+    padding: 5px;
+    font-size: 1.7rem;
+    font-family: 'Roboto mono', monospace;
+    outline: none;
+    border: none;
+    text-align: center;
+
+    background-color: transparent;
+    border-bottom: black 3px solid;
+}
+
+.loginBtn,.register {
+    height: 5.5vh;
+    outline: none;
+    background-color:transparent;
+
+    box-sizing: border-box;
+    font-size: 2.1rem;
+    text-align: center;
+    padding:  3px 20px;
+    font-family: 'DM Serif Display', cursive !important;
+    
+    border-radius:10px;
+    border: var(--onyx) 2px solid;
+}
+
+body {
+    background-color: var(--background)
+}

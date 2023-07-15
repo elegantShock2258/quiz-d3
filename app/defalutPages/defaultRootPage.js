@@ -11,7 +11,7 @@ export default function DefaultPage() {
         setDialogOpen(true)
     }
     return <>
-        <div className='navbar'><span className='login' onClick={() => { window.location = "/login" }}>login</span></div >
+        <div className='navbar'><span className='login loginBtn' onClick={() => { window.location = "/login" }}>login</span></div >
         <div className='container'>
             <h1 className='quiz'>Quiz!</h1>
             <div className='quizId'>
