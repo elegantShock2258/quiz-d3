@@ -4,10 +4,13 @@ import { motion } from 'framer-motion'
 import { AnimatePresence } from "framer-motion";
 
 import './userpageStyles.css'
+
 const UserPage = (props) => {
     if (props.user != -1) {
         console.log(props.user)
         let QuizMade = JSON.parse(props.user.QuizMade)
+        let quizzes = []
+
 
 
         let initialAnimVariantDown = {
@@ -37,7 +40,7 @@ const UserPage = (props) => {
                         <motion.div variants={initialAnimVariantDown} className="username">
                             <motion.div variants={initialAnimVariantDown} className="Name">{props.user.FirstName} {props.user.LastName}</motion.div>
                             {/* TODO: implement follow requests */}
-                            <motion.button variants={initialAnimVariantDown} whileHover={{ backgroundColor: "black", color: "white", border: "1px solid white", borderRadius: "14px" }}  transition={{ duration: 2,ease:"linear",type:"tween" }} className="followBtn">Follow</motion.button>
+                            <motion.button variants={initialAnimVariantDown} whileHover={{ backgroundColor: "black", color: "white", border: "1px solid white", borderRadius: "14px" }} transition={{ duration: 2, ease: "linear", type: "tween" }} className="followBtn">Follow</motion.button>
 
                         </motion.div>
                         <motion.div variants={initialAnimVariantDown} className="dataBar">
@@ -58,7 +61,10 @@ const UserPage = (props) => {
                 }} className="QuizView">
                     {(QuizMade.length != 0) &&
                         // TODO:implement
-                        <motion.h1> Quizes Made </motion.h1>
+                        <>
+                            <motion.h1> Quizes Made </motion.h1>
+                        </>
+
                     }
 
                     {(QuizMade.length == 0) &&
@@ -66,7 +72,7 @@ const UserPage = (props) => {
                     }
                 </motion.div>
             </motion.div>
-        </AnimatePresence>
+        </AnimatePresence >
     } else {
         return <center>user not found!</center>
     }

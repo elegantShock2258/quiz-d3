@@ -57,7 +57,7 @@ function Question(props) {
         }
 
         for (let i = 0; i < question.options.length; i++) {
-            options[i] = <div key={i*12343+654}><input className='MSQCheckbox' type="checkbox"  onChange={(e) => { updateAnswerId(question.options[i], e) }} /> {question.options[i]} </div>
+            options[i] = <div key={i * 12343 + 654}><input className='MSQCheckbox' type="checkbox" onChange={(e) => { updateAnswerId(question.options[i], e) }} /> {question.options[i]} </div>
         }
         return <div className='MSQContainer'>
             <div className='MSQQuestionText'>{questionText}</div>
@@ -78,7 +78,7 @@ function Question(props) {
         let [checked, setChecked] = useState(-1)
 
         for (let i = 0; i < question.options.length; i++) {
-            options[i] = <div key = {i+123*2}><input className='MSQCheckbox'  id={(checked == i) ? "answer" + props.id : ""} type="radio" checked={checked === i} onChange={(e) => { setChecked(i); }} value={question.options[i]} /> {question.options[i]} </div>
+            options[i] = <div key={i + 123 * 2}><input className='MSQCheckbox' id={(checked == i) ? "answer" + props.id : ""} type="radio" checked={checked === i} onChange={(e) => { setChecked(i); }} value={question.options[i]} /> {question.options[i]} </div>
         }
         return <div className='MSQContainer'>
             <div className='MSQQuestionText'>{questionText}</div>
@@ -118,15 +118,15 @@ function Question(props) {
         for (let i = 0; i < question.cols.length; i++) {
             let tableRow = []
             for (let j = 0; j < numRow; j++) {
-                tableRow.push(<td className='cell' key={j*(i+1)*4+23328}>{question.cols[i][j]}</td>)
+                tableRow.push(<td className='cell' key={j * (i + 1) * 4 + 23328}>{question.cols[i][j]}</td>)
             }
-            table.push(<tr key={i*54+254}>{tableRow.length ? tableRow : <div>empty</div>}</tr>)
+            table.push(<tr key={i * 54 + 254}>{tableRow.length ? tableRow : <div>empty</div>}</tr>)
 
         }
 
 
         for (let i = 0; i < question.options.length; i++) {
-            options[i] = <div key={123432+i} ><input className='MSQCheckbox' type="checkbox" onChange={(e) => { updateAnswerId(question.options[i], e) }} /> {question.options[i]} </div>
+            options[i] = <div key={123432 + i} ><input className='MSQCheckbox' type="checkbox" onChange={(e) => { updateAnswerId(question.options[i], e) }} /> {question.options[i]} </div>
         }
 
 
@@ -284,13 +284,17 @@ const QuizPage = (props) => {
         let questions = quiz.questions
 
         questions.forEach(element => {
-            content.push(<Question question={element} key={123212345234*Math.random()+19} id={questions.indexOf(element)} answers={answers}></Question>)
+            content.push(<Question question={element} key={123212345234 * Math.random() + 19} id={questions.indexOf(element)} answers={answers}></Question>)
         });
 
     } else {
         content.push(<center key={234}> quiz not found!</center>)
     }
     return (<div className="quizParent">
+        <div>
+            <h1 className='quiztitle'>{props.quiz.title}</h1>
+            <span className='credit'>~Created By: <div className='Username' onClick={()=>{window.location=`@${props.userCreated.Username}`}}>@{props.userCreated.Username}</div></span>
+        </div>
         {content.length ? content : loading}
         <button onClick={submitAnswers}>submit</button>
     </div>)

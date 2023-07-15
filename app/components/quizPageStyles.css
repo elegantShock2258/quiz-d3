@@ -168,3 +168,33 @@ button {
     align-self:flex-start;
     margin-left: 5vw;
 }
+.quiztitle{
+    font-family: 'Abril Fatface';
+    font-size: 20rem !important;
+}
+.credit{
+    font-family: 'Alice';
+    font-size:1.8rem;
+    font-style: italic;
+}
+
+.Username{
+    display: inline;
+    padding: 8px;
+    margin: 5px;
+
+    font-size: 1.3rem;
+    font-family: 'DM Serif Display' !important;
+
+    text-align: right;
+
+    background-color: var(--rosy-brown);
+    color: white;
+    width: 100vw;
+    border: 3px solid black;
+    border-radius: 10px;
+
+    align-self: flex-end;
+}
+
+
